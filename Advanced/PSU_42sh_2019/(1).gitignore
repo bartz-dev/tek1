@@ -1,8 +1,0 @@
-*.o
-a.out
-settings.json
-vgcore.*
-.vscode/*
-__pycache__/*
-*.a
-42sh
