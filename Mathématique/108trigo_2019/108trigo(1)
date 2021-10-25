@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2019
+## 108trigo_2019
+## File description:
+## 108trigo
+##
+
+from main import *
+
+if __name__ == '__main__':
+    main()
+    exit(0)

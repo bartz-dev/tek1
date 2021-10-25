@@ -1,0 +1,59 @@
+##
+## EPITECH PROJECT, 2019
+## makefile
+## File description:
+## my_sokoban compile
+##
+
+SRC		=	main.c	\
+
+OBJ		=	$(SRC:.c=.o)
+
+CC		=	gcc
+
+MK	=	make --no-print-directory
+
+NAME		=	my_defender
+
+CFLAGS		+=	-W -Wall -Wextra -pedantic
+
+all:		build_lib build_json build_linked build_tools $(NAME)
+
+$(NAME): 	$(OBJ)
+		@echo -e "\033[01m\033[31mBuilding...\033[00m"
+		@$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+		@echo -e "\033[01m\033[32mCompilation done: ${NAME}\033[00m"
+
+build_lib:
+		@$(MK) -C lib/game libgame.a
+
+build_json:
+		@$(MK) -C lib/json libjson.a
+
+build_linked:
+		@$(MK) -C lib/linked liblinked.a
+
+build_tools:
+		@$(MK) -C lib/tools libtools.a
+
+tools_fclean:
+		@echo -e "\033[01m\033[31mCleaning libtools...\033[00m"
+		@$(MK) -C lib/tools fclean
+game_fclean:
+		@echo -e "\033[01m\033[31mCleaning libgame...\033[00m"
+		@$(MK) -C lib/game fclean
+linked_fclean:
+		@echo -e "\033[01m\033[31mCleaning liblinked...\033[00m"
+		@$(MK) -C lib/linked fclean
+json_fclean:
+		@echo -e "\033[01m\033[31mCleaning libjson...\033[00m"
+		@$(MK) -C lib/json fclean
+
+clean:
+		@rm -f $(OBJ)
+
+fclean:		clean tools_fclean game_fclean linked_fclean json_fclean
+			@echo -e "\033[01m\033[31mCleaning binary...\033[00m"
+			@rm -f $(NAME)
+
+re:		fclean all
